@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -120,7 +119,6 @@
             <div class="form-group">
                 <label>اختر المنصة 📲</label>
                 <select id="platformSelect">
-                    <label>إنستغرام (Instagram) 👑</label>
                     <option value="Instagram">إنستغرام (Instagram)</option>
                     <option value="TikTok">تيك توك (TikTok)</option>
                 </select>
