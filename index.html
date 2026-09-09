@@ -102,6 +102,47 @@
             font-size: 14px;
             font-weight: 500;
         }
+
+        /* قسم حسابات التواصل الاجتماعي */
+        .social-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #2a3142;
+        }
+
+        .social-title {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .social-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px;
+            background: #0b0d12;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #f8fafc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: #e11d48;
+            color: #e11d48;
+        }
     </style>
 </head>
 <body>
@@ -133,6 +174,19 @@
         </form>
 
         <div id="status"></div>
+
+        <!-- أزرار حسابات The Storytellers -->
+        <div class="social-section">
+            <p class="social-title">تابعوا مجتمع The Storytellers 🔗</p>
+            <div class="social-links">
+                <a href="https://instagram.com/thestorytellers.sa" target="_blank" class="social-btn">
+                    👑 Instagram
+                </a>
+                <a href="https://tiktok.com/@thestorytellers.sa" target="_blank" class="social-btn">
+                    🎵 TikTok
+                </a>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -144,7 +198,7 @@
             
             const fileInput = document.getElementById('mediaFile');
             const platform = document.getElementById('platformSelect').value;
-            const socialUser = document.getElementById('socialUser').value;
+            const socialUser = document.getElementById('socialUser').value.replace('@', '').trim();
             const statusDiv = document.getElementById('status');
 
             if (!fileInput.files[0]) {
@@ -155,12 +209,13 @@
             statusDiv.style.color = '#38bdf8';
             statusDiv.innerText = 'جاري رفع القصة... يرجى الانتظار ⏳';
 
+            // تسمية الملف بالمنصة واسم المستخدم مع التوقيت لمنع تكرار الأسماء
+            const customPublicId = `${platform}_${socialUser}_${Date.now()}`;
+
             const formData = new FormData();
             formData.append('file', fileInput.files[0]);
             formData.append('upload_preset', UPLOAD_PRESET);
-            
-            const contextData = `platform=${platform}|username=${socialUser}`;
-            formData.append('context', contextData);
+            formData.append('public_id', customPublicId); 
 
             try {
                 const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
