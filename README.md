@@ -1,6 +1,4 @@
-# The-storytellers
-
-<!DOCTYPE html>
+# The Storytellers
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
