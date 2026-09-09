@@ -97,8 +97,8 @@
 
   <script>
     // ضعي بيانات حسابك في Cloudinary هنا
-    const CLOUD_NAME = 'YOUR_CLOUD_NAME'; 
-    const UPLOAD_PRESET = 'YOUR_UPLOAD_PRESET';
+    const CLOUD_NAME = 'yxusnhxg; 
+    const UPLOAD_PRESET = 'The storytellers';
 
     const form = document.getElementById('storyForm');
     const statusDiv = document.getElementById('status');
